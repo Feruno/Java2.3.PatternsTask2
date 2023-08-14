@@ -62,6 +62,7 @@ public class AppIbank {
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль"))
                 .shouldBe(Condition.visible);
     }
+
     @Test
     void appWrongPass() {
         var regUser = generetRegUser("active");

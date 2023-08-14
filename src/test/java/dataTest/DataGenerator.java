@@ -23,11 +23,11 @@ public class DataGenerator {
 
     private static final Faker fake = new Faker(new Locale("en"));
 
-    private DataGenerator(){
+    private DataGenerator() {
 
     }
 
-    private static void sendRequestSpec(RegistUser user){
+    private static void sendRequestSpec(RegistUser user) {
         given()
                 .spec(requestSpec)
                 .body(user)
@@ -38,11 +38,12 @@ public class DataGenerator {
 
     }
 
-    public static String randLogin(){
+    public static String randLogin() {
         String login = fake.name().username();
         return login;
     }
-    public static String randPassword(){
+
+    public static String randPassword() {
         String password = fake.internet().password();
         return password;
     }
@@ -55,12 +56,14 @@ public class DataGenerator {
             var user = new RegistUser(randLogin(), randPassword(), status);
             return user;
         }
-        public static RegistUser generetRegUser (String status){
+
+        public static RegistUser generetRegUser(String status) {
             var registerUser = generetUser(status);
             sendRequestSpec(registerUser);
             return registerUser;
         }
     }
+
     @Value
     public static class RegistUser {
         String login;
