@@ -47,7 +47,7 @@ public class AppIbank {
         $("[data-test-id=password] input").setValue(blockedRegUser.getPassword());
         $("button.button").click();
         $("[data-test-id='error-notification'] .notification__content")
-                .shouldHave(Condition.exactText("Ошибка! Пользователь заблокировн"))
+                .shouldHave(Condition.exactText("Ошибка! Пользователь заблокирован"))
                 .shouldBe(Condition.visible);
     }
 
@@ -64,10 +64,10 @@ public class AppIbank {
     }
     @Test
     void appWrongPass() {
-        var notRegUser = generetUser("active");
+        var regUser = generetRegUser("active");
         var wrongPass = randPassword();
-        $("[data-test-id=login] input").setValue(wrongPass);
-        $("[data-test-id=password] input").setValue(notRegUser.getPassword());
+        $("[data-test-id=login] input").setValue(regUser.getLogin());
+        $("[data-test-id=password] input").setValue(wrongPass);
         $("button.button").click();
         $("[data-test-id='error-notification'] .notification__content")
                 .shouldHave(Condition.exactText("Ошибка! Неверно указан логин или пароль"))
